@@ -11,13 +11,17 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], 
-    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 
 model = YOLO("yolov8n.pt")
+
+@app.get("/ping")
+async def ping():
+    return {"message": "pong"}
+
 
 @app.post("/detect")
 async def detect(file: UploadFile = File(...)):
@@ -40,3 +44,4 @@ async def detect(file: UploadFile = File(...)):
         })
 
     return {"detections": detections}
+
