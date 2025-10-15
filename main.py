@@ -43,7 +43,7 @@ async def detect(file: UploadFile = File(...)):
             "class": label
         })
 
-    return {"model": "yolov8n", "detections": detections}
+    return {"model": "detect", "detections": detections}
 
 
 @app.post("/detect2")
@@ -66,4 +66,5 @@ async def detect_alt(file: UploadFile = File(...)):
             "class": label
         })
 
-    return {"model": "yolov8m", "detections": detections}
+    return {"model": "detect2", "detections": detections}
+
