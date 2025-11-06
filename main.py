@@ -15,7 +15,7 @@ app.add_middleware(
 
 # Load two different YOLO models
 # model_primary = YOLO("yolov8n.pt")  
-model_secondary = YOLO("mini.cnp.pt")    
+model_secondary = YOLO("best.pt")    
 
 @app.get("/ping")
 async def ping():
@@ -67,5 +67,6 @@ async def detect_alt(file: UploadFile = File(...)):
         })
 
     return {"model": "v1", "detections": detections}
+
 
 
